@@ -1,0 +1,31 @@
+﻿<Window x:Name="Dll_Version_Checker" x:Class="DllHell.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DllHell"
+        mc:Ignorable="d"
+        Title="DLL Version Checker" Height="462.717" Width="785.326">
+    <Grid>
+        <Label x:Name="Browse_Label" Content="Select folder to scan: " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Height="23"/>
+        <TextBox x:Name="FolderToScan_Text" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Margin="138,10,169,0" KeyUp="FolderToScan_Text_KeyUp" Text="C:\OneDrive\Programming\CSharp\DllHell"/>
+        <Button x:Name="BrowseForFolder_Button" Content="..." VerticalAlignment="Top" Margin="0,10,134,0" Height="23" Click="BrowseForFolder_Button_Click" HorizontalAlignment="Right" Width="30"/>
+        <ListView x:Name="DllList_ListView" Margin="10,38,10,10" MouseDoubleClick="DllList_ListView_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="File Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Version">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding Version}" Foreground="{Binding ErrorColor}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Exclude" DisplayMemberBinding="{Binding Exclude}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ComboBox x:Name="AverageType" VerticalAlignment="Top" Margin="0,10,10,0" HorizontalAlignment="Right" Width="119" SelectionChanged="AverageType_SelectionChanged"/>
+
+    </Grid>
+</Window>
